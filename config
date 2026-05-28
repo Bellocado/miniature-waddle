@@ -39,7 +39,7 @@ output * background '~/Pictures/Wallpapers/bg.png' fill
 
 ### --- MANDATORY KEYBINDINGS --- ###
 
-# Win + Enter -> Launches your native foot terminal
+# Win + Enter -> Launches your custom styled foot terminal
 bindsym $mod+Return exec $term
 
 # Win + Q -> Instantly closes the focused window panel
@@ -97,13 +97,15 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-### BAR FRAME WORK ###
-# Extremely fast and ultra-clean minimal clock strip at the bottom of the screen
+### BAR FRAMEWORK ###
+# Fast, clean minimal clock strip shifted to the TOP of the display
 bar {
-    position bottom
+    position top
     status_command while date +'%Y-%m-%d │ %I:%M %p'; do sleep 1; done
     colors {
         statusline #ffffff
-        background #1e1e1e
+        background #24273a
+        focused_workspace  #5c5c5c #5c5c5c #ffffff
+        inactive_workspace #231f20 #231f20 #aaaaaa
     }
 }
