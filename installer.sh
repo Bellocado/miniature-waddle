@@ -1,4 +1,14 @@
-mkdir -p ~/.config/foot
-cat << 'EOF' > ~/.config/foot/foot.ini
-# -*- conf -*-\n# Catppuccin Macchiato theme for foot\n# Replicated from kitty config\n\n[main]\nfont=JetBrainsMono Nerd Font:size=11\n\n[cursor]\nstyle=beam\nblink=yes\n\n[colors-dark]\nforeground=cad3f5\nbackground=24273a\nregular0=494d64  # black\nregular1=ed8796  # red\nregular2=a6da95  # green\nregular3=eed49f  # yellow\nregular4=8aadf4  # blue\nregular5=f5bde6  # magenta\nregular6=8bd5ca  # cyan\nregular7=b8c0e0  # white\nbright0=5b6078   # bright black\nbright1=ed8796   # bright red\nbright2=a6da95   # bright green\nbright3=eed49f   # bright yellow\nbright4=8aadf4   # bright blue\nbright5=f5bde6   # bright magenta\nbright6=8bd5ca   # bright cyan\nbright7=a5adcb   # bright white\n\nselection-foreground=24273a\nselection-background=f4dbd6\n\nurls=f4dbd6\ncursor=b8c0e0 494d64
+cat << 'EOF' >> ~/.config/sway/config
+
+### BAR FRAMEWORK ###
+bar {
+    position top
+    status_command while true; do echo "VOL: $(amixer sget Master | awk -F'[][]' '/Left:/ { print $2 }') │ WIFI: $(nmcli -t -f active,ssid dev wifi | grep yes | cut -d: -f2) │ BAT: $(acpi | awk '{print $4}' | tr -d ',') │ $(date +'%Y-%m-%d │ %H:%M')"; sleep 1; done
+    colors {
+        statusline #ffffff
+        background #24273a
+        focused_workspace  #5c5c5c #5c5c5c #ffffff
+        inactive_workspace #231f20 #231f20 #aaaaaa
+    }
+}
 EOF
